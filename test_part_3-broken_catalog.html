@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///C:/Users/sebas/Downloads/index_jose_guerra_pt_2%20(1).html -->
+<html lang="en">
+<head>
+<style>
+.hidden {
+    display: none;
+        }
+
+
+
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Debugging Test - Part 3</title>
+
+
+<script>
+        let productsDisplayed = 0;
+        const cleanRecords = () => {
+            const nodes = document.querySelectorAll('#furniture-list > div');
+            for (let index = 0; index < nodes.length; index++) {
+                const node = nodes[index];
+                node.className="hidden";                
+            }
+        }
+        const filterRecords = (filterValue) => {
+            const nodes = document.querySelectorAll('#furniture-list > div');
+            productsDisplayed = 0;
+            for (let index = 0; index < nodes.length; index++) {
+                const node = nodes[index];
+                
+                if (node.dataset.altname.toLowerCase().includes(filterValue)) {
+                    node.className="";
+                    productsDisplayed++;
+                }                
+            }
+            
+        }
+
+        // Function to filter furniture values
+        const filterFurniture = () => {
+            cleanRecords();
+            const inputFilter = document.getElementById("myInput");
+            const filterValue = inputFilter.value.trim().toLowerCase();
+            filterRecords(filterValue);
+            checkEmptyList();
+        }
+
+        const checkEmptyList = () => {
+            document.querySelector('#empty-list-message').className = productsDisplayed > 0 ? "hidden" : "";
+        } 
+    
+    
+
+
+
+</script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Furniture product list</h1>
+        <input type="text" id="myInput" onkeyup="filterFurniture()" placeholder="Search for furnitures..."
+            title="Type in a name">
+        <div id="furniture-list">
+            <div class="product" id="furniture-1" data-index="0" data-altname="Drux table lamp">
+                <p>Drux table lamp</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1517991104123-1d56a6e81ed9ixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Drux table lamp" width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-2" data-index="1" data-altname="Twist side table">
+                <p>Twist side table</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1507392671925-cbcf789b478dixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Twist side table" width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-3" data-index="2" data-altname="Compel bookcase">
+                <p>Compel bookcase</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/pexels-photo-2067569.jpegautocompresscstinysrgbh750w1260"
+                        alt="Compel bookcase" width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-4" data-index="3" data-altname="Nebula chair">
+                <p>Nebula chair</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1519947486511-46149fa0a254ixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Nebula Chair" width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-5" data-index="4" data-altname="Samari bookshelf">
+                <p>Samari bookshelf</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1543248939-4296e1fea89bixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9w1000q80"
+                        alt="Samari bookshelf" width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-6" data-index="5" data-altname="Kelly Sall light">
+                <p>Kelly Sall light</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1540932239986-30128078f3c5ixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Kelly Sall light" width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-7" data-index="6" data-altname="Traverse coffee table">
+                <p>Traverse coffee table</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1461418126083-a84e9ca935deixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Traverse coffe table" width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-8" data-index="7" data-altname="Zig-zag rug">
+                <p>Zig-zag rug</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1557374669-d1f478dc92c4ixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Zig-zag rug" width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-9" data-index="8" data-altname="Phona Shanta rug">
+                <p>Phona Shanta rug</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1534889156217-d643df14f14aixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Phona Shanta rug" width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-10" data-index="9" data-altname="Dual extension table">
+                <p>Dual extension table</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1530018607912-eff2daa1bac4ixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Dual extension table"
+                        width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-11" data-index="10" data-altname="Gedo bench">
+                <p>Gedo bench</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1499364781141-6f7bf8bbc8dbixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Gedo bench"
+                        width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-12" data-index="11" data-altname="Rectangular sofa in Blue moon">
+                <p>Rectangular sofa in Blue moon</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/pexels-photo-1282315.jpegautocompresscstinysrgbh750w1260"
+                        alt="Rectangular sofa in Blue moon" width="70px"
+                        height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-13" data-index="12" data-altname="Dita side table">
+                <p>Dita side table</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1499933374294-4584851497ccixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Dita side table"
+                        width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-14" data-index="13" data-altname="Cow rug">
+                <p>Cow rug</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1499955085172-a104c9463eceixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9w1000q80"
+                        alt="Cow rug"
+                        width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-15" data-index="14" data-altname="Xu table tamp">
+                <p>Xu table tamp</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1542728928-1413d1894ed1ixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Xu table tamp"
+                        width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-16" data-index="15" data-altname="Strul rug">
+                <p>Strul rug</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/pexels-photo-317333.jpegautocompresscstinysrgbh750w1260"
+                        alt="Strul rug" width="70px"
+                        height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-17" data-index="16" data-altname="Ikrore chair">
+                <p>Ikrore chair</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/pexels-photo-1166406.jpegautocompresscstinysrgbh750w1260"
+                        alt="Ikrore chair" width="70px"
+                        height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-18" data-index="17" data-altname="Angular pendant">
+                <p>Angular pendant</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1546902172-146006dcd1e6ixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Angular pendant"
+                        width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-19" data-index="18" data-altname="Madrid chair">
+                <p>Madrid chair</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/photo-1505843490538-5133c6c7d0e1ixlibrb-1.2.1ixideyJhcHBfaWQiOjEyMDd9autoformatfitcropw1000q80"
+                        alt="Madrid chair"
+                        width="70px" height="70px">
+                </div>
+            </div>
+            <div class="product" id="furniture-20" data-index="19" data-altname="Pixellated rug">
+                <p>Pixellated rug</p>
+                <div class="tooltip">
+                    <img src="./base_test_part_3_files/pexels-photo-1482177.jpegautocompresscstinysrgbh750w1260"
+                        alt="Pixellated rug" width="70px"
+                        height="70px">
+                </div>
+            </div>
+            <p id="empty-list-message" class="hidden">No records found</p>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
