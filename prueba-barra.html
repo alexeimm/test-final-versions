@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Furniture Catalog</title>
+</head>
+<body>
+
+
+  <div id="loader" style="display: none;">
+    <p>Loading...</p>
+    <progress id="loadAnimation" max="5"></progress>
+    <div class="loader"></div>
+
+  </div>
+  <div id="products"></div>
+  <div id="load-more"></div>
+
+  <script>
+
+    var buttonContainer = document.getElementById("load-more");
+    var newButton = document.createElement("button");
+
+    newButton.setAttribute("id", "new-button");
+    newButton.innerHTML = "Load More";
+    newButton.addEventListener("click", function() {
+    });
+    buttonContainer.appendChild(newButton);
+
+    
+    let products = [];
+    let index = 0;
+
+    function fetchProducts() {
+      document.getElementById("loader").style.display = "block";
+      fetch("https://api.airtable.com/v0/appElurJfZ2WmdIUg/Furniture/?api_key=keys1gmUsZYDi7y0g")
+        .then(response => response.json()) 
+        .then(data => {
+          products = data.records;
+          displayProducts(5);
+        })
+        .catch(error => {
+          alert("An error occurred while getting the products: " + error);
+        });
+    }
+
+    function displayProducts(n) {
+      let container = document.getElementById("products");
+      let button = document.getElementById("load-more");
+      let loader = document.getElementById("loader");
+      loader.style.display = "none";
+      for (; index < n && index < products.length; index++) {
+        let product = products[index];
+        let image = document.createElement("img");
+        let div = document.createElement("div");
+        
+        image.src = product.fields.Images[0].url;
+        div.appendChild(image);
+        container.appendChild(div);
+      }
+      if (index < products.length) {
+        button.style.display = "block";
+      } else {
+        button.style.display = "none";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+       let loadMore = document.getElementById("load-more");
+
+       if (loadMore != null) {
+         loadMore.addEventListener("click", function() {
+           displayProducts(index + 5);
+         });
+       }
+
+       fetchProducts();
+    });
+    
+
+
+document.addEventListener("DOMContentLoaded", function(event) {
+
+request.onload = function() {
+    if (this.status >= 200 && this.status < 400) {
+        var data = JSON.parse(this.response);
+        var records = data.records;
+        var num_images = Math.min(records.length, 5);
+        var barraCarga = document.getElementById("loadAnimation");
+
+    } else {
+        console.log('Failed to get data from API');
+    }
+};
+
+request.onerror = function() {
+    console.log('Connection error');
+};
+
+request.send();
+});
+
+
+
+
+</script>
+
+
+</body>
+</html>
